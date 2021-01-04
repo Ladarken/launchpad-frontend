@@ -85,7 +85,6 @@ const Farm: React.FC = () => {
             />
           <Spacer />
 
-            <Harvest pid={pid}/>
                 
       </CardContent></Flip>
       </Card>

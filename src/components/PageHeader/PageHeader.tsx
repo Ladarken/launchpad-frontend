@@ -24,7 +24,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ icon, subtitle, title }) => {
           </>
 
           :
-          <div style={{position:"relative", marginTop:-150, marginBottom:30}}>
+          <div style={{position:"relative", marginTop:-150, marginBottom:55}}>
           <StyledTitle>{title}</StyledTitle>
           <Spacer size="md" />
           <StyledSubtitle>{subtitle}</StyledSubtitle>

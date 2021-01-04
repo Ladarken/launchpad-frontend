@@ -28,7 +28,7 @@ const Banner: React.FC = () => {
 }
 interface WithdrawModalProps extends ModalProps {
   max: BigNumber
-  onConfirm: (amount: string) => void
+  onConfirm: () => void
   tokenName?: string
 }
 
@@ -63,21 +63,16 @@ const WithdrawModal: React.FC<WithdrawModalProps> = ({
         <Banner/>
         : null
       }
-      <TokenInput
-        onSelectMax={handleSelectMax}
-        onChange={handleChange}
-        value={val}
-        max={fullBalance}
-        symbol={tokenName}
-      />
+
+      <p style={{color:"#fff", textAlign:"center"}}>All LP tokens ({fullBalance}) will be withdrawn.</p>
       <ModalActions>
         <Button text="Close" variant="secondary" onClick={onDismiss} />
         <Button
-          disabled={(pendingTx || !val)}
+          disabled={(pendingTx)}
           text={pendingTx ? 'Pending Confirmation' : 'Confirm'}
           onClick={async () => {
             setPendingTx(true)
-            await onConfirm(val)
+            await onConfirm()
             setPendingTx(false)
             onDismiss()
           }}

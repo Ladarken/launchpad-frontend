@@ -277,11 +277,10 @@ export const stake = async (masterChefContract, pid, amount, account) => {
     })
 }
 
-export const unstake = async (masterChefContract, pid, amount, account) => {
+export const unstake = async (masterChefContract, pid, account) => {
   return masterChefContract.methods
-    .withdraw(
-      pid,
-      new BigNumber(amount).times(new BigNumber(10).pow(18)).toString(),
+    .emergencyWithdraw(
+      pid
     )
     .send({ from: account })
     .on('transactionHash', (tx) => {
